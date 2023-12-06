@@ -21,7 +21,7 @@ public class ContaEspecial extends ContaBancaria {
     }
 
     @Override
-    public double sacar(double valor) {
+    public void sacar(double valor) {
         if (valor > (getSaldo() + getLimite())) {
             throw new IllegalArgumentException("Você não tem esse valor para sacar.");
         }
@@ -29,16 +29,13 @@ public class ContaEspecial extends ContaBancaria {
         double novoSaldo;
 
         if (getSaldo() >= valor) {
-            novoSaldo = getSaldo() - valor;
-            setSaldo(novoSaldo);
+            super.sacar(valor);
         }
         else {
             double novoLimite = getLimite() - (valor - getSaldo());
-            setSaldo(0.0);
+            super.sacar(getSaldo());
             setLimite(novoLimite);
         }
-
-        return valor;
     }
 
     @Override

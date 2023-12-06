@@ -11,12 +11,11 @@ public abstract class ContaBancaria {
         setNumeroDaConta(numeroDaConta);
     }
 
-    public double sacar(double valor) {
+    public void sacar(double valor) {
         if (valor > saldo) {
             throw new IllegalArgumentException("Você não possui este valor para o saque.");
         }
         this.saldo -= valor;
-        return valor;
     }
 
     public void depositar(double valor) {
@@ -32,10 +31,6 @@ public abstract class ContaBancaria {
 
     private void setNumeroDaConta(int numero) {
         this.numeroDaConta = numero;
-    }
-
-    protected void setSaldo(double valor) {
-        this.saldo = valor;
     }
 
     public double getSaldo() {

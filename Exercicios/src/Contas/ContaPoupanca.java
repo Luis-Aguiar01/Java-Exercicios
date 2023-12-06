@@ -11,7 +11,7 @@ public class ContaPoupanca extends ContaBancaria {
 
     public void calcularNovoSaldo(double taxa) {
         double valor = getSaldo() * (1 + taxa);
-        setSaldo(valor);
+        super.depositar(valor);
     }
 
     private void setDiaDeRendimento(int dia) {
